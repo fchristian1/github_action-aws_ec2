@@ -41,7 +41,15 @@ jobs:
     - name: run ansible playbook
       run: |
         cd ansible && ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i ./inventory ./playbook.yml
-    
+    - name: Install Node
+      uses: uses: actions/setup-node@v4.2.0
+
+    - name: run npm
+      run: |
+        cd react
+        npm install
+        npm run build
+
     - name: deploy website
       run: |
         bash ./copy.sh
