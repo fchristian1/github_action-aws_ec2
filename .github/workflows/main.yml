@@ -33,5 +33,5 @@ jobs:
           sudo apt update
           sudo apt-get install terraform
           terraform version
-          ls
+          cd terraform && terraform plan
   
