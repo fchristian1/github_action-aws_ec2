@@ -1,5 +1,5 @@
 data "external" "generate_ipfile-server" {
-  depends_on = [module.aws-instances-server]
+  depends_on = [module.aws-instances-webserver]
 
   program = ["bash", "-c", <<EOT
     FILE="./type_ips"
