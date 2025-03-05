@@ -1,1 +1,11 @@
+---
+- name Install and configure nginx for static website hosting
+  hosts: server
+  become: yes
 
+  tasks:
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: latest
+        update_cache: yes

@@ -5,7 +5,7 @@ provider "aws" {
 
 module "key_pair" {
   source   = "./modules/aws_key_pair"
-  key_path = "./my_key.pem"
+  key_path = "./../my_key.pem"
   key_name = "my_aws_key"
 }
 module "sg" {

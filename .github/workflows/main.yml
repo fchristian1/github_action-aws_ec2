@@ -39,3 +39,7 @@ jobs:
       uses: alex-oleshkevich/setup-ansible@v1.0.1
       with:
         version: "2.18.3"
+
+    - name:
+      run: |
+        cd ansible && ANSIBLE_HOST_KEY_CHECKING=False ansible -i ./ansible/inventory ./ansible/playbooks.yml
