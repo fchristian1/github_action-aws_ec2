@@ -1,6 +1,5 @@
 ---
-- name Install and configure nginx for static website hosting
-  hosts: server
+- hosts: server
   become: yes
 
   tasks:
