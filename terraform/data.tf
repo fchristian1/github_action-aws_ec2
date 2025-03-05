@@ -17,7 +17,7 @@ data "external" "generate_inventory_first" {
   depends_on = [data.external.generate_ipfile-server]
 
   program = ["bash", "-c", <<EOT
-    INVENTORY_FILE="./ansible/inventory"
+    INVENTORY_FILE="./../ansible/inventory"
     echo "[all:vars]" > $INVENTORY_FILE
     echo "ansible_ssh_user=ubuntu" >> $INVENTORY_FILE
     echo "ansible_ssh_private_key_file=./../my_key.pem" >> $INVENTORY_FILE
