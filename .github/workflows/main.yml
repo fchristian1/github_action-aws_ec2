@@ -33,4 +33,4 @@ jobs:
           ls -l terraform/
           ls -l ansible/
           cat ansible/inventory
-  
+          bash generate_inventory.sh  
