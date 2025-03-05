@@ -29,8 +29,8 @@ jobs:
       run: |
           terraform -chdir=terraform/ init
           terraform -chdir=terraform/ apply -auto-approve
+          bash ./terraform/generate_inventory.sh  
           ls -l
           ls -l terraform/
           ls -l ansible/
           cat ansible/inventory
-          bash ./terraform/generate_inventory.sh  
