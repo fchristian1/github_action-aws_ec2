@@ -38,6 +38,10 @@ jobs:
     - name: Setup Ansible
       run: pipx install --include-deps ansible
 
-    - name:
+    - name: run ansible playbook
       run: |
         cd ansible && ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i ./inventory ./playbook.yml
+    
+    - name: deploy website
+      run: |
+        bash ./copy.sh
