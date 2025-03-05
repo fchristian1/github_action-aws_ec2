@@ -18,6 +18,10 @@ jobs:
         # AWS Session Token.
         aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
         # Use the web identity token file from the provided file system path in order to assume an IAM role using a web identity, e.g. from within an Amazon EKS worker node.
+    - name: echo path
+      run: |
+          ls -la
+          echo $(ls -la)
     - name: Install Terraform
       run: |
           sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
