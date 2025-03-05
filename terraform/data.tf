@@ -21,6 +21,7 @@ data "external" "generate_inventory_first" {
     echo "[all:vars]" > $INVENTORY_FILE
     echo "ansible_ssh_user=ubuntu" >> $INVENTORY_FILE
     echo "ansible_ssh_private_key_file=./../my_key.pem" >> $INVENTORY_FILE
+    echo "ansible_python_interpreter=/usr/bin/python3" >> $INVENTORY_FILE
     
     echo "{\"status\": \"success\"}"
   EOT
