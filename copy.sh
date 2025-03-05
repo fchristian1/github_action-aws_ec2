@@ -2,12 +2,16 @@
 
 # Ansible Inventory Datei
 INVENTORY="./ansible/inventory"
-# Datei, die kopiert werden soll
-SRC_FILE="html/"
+# Quellverzeichnis mit den Dateien, die kopiert werden sollen
+SRC_DIR="html/"
 # Zielverzeichnis auf den Servern
-DEST_DIR="/home/ubuntu"
+DEST_DIR="/home/ubuntu/deploy_html"
+# SSH-Schlüssel für die Verbindung
+SSH_KEY="my_key.pem"
+# Zielverzeichnis für den Webserver
+WEB_DIR="/var/www/html"
 
-# Extrahiere IPs aus [server]-Gruppe des Inventars
+# Extrahiere IPs aus der [server]-Gruppe des Ansible-Inventars
 HOSTS=$(awk '/\[server\]/ {flag=1; next} /^\[/{flag=0} flag && NF {print $1}' "$INVENTORY")
 
 # Prüfe, ob Hosts gefunden wurden
@@ -18,11 +22,18 @@ fi
 
 # Datei auf jeden Host kopieren
 for HOST in $HOSTS; do
-    echo "Kopiere $SRC_FILE nach $HOST:$DEST_DIR"
-    ssh -i my_key.pem ubuntu@$HOST "sudo rm $DEST_DIR/* -rf"
-    scp -i my_key.pem "$SRC_FILE" "ubuntu@$HOST:$DEST_DIR"
-    ssh -i my_key.pem ubuntu@$HOST "sudo cp $DEST_DIR/html/* /var/www/html/"
+    echo "Verbinde mit $HOST und übertrage Dateien..."
+
+    # Erstelle das temporäre Verzeichnis auf dem Remote-Server
+    ssh -i "$SSH_KEY" ubuntu@$HOST "mkdir -p $DEST_DIR && sudo rm -rf $DEST_DIR/*"
+
+    # Kopiere das gesamte HTML-Verzeichnis auf den Remote-Server
+    scp -i "$SSH_KEY" -r "$SRC_DIR" "ubuntu@$HOST:$DEST_DIR"
+
+    # Verschiebe den Inhalt aus dem temporären Ordner nach /var/www/html/
+    ssh -i "$SSH_KEY" ubuntu@$HOST "sudo rm -rf $WEB_DIR/* && sudo cp -r $DEST_DIR/* $WEB_DIR/"
+
+    echo "Deployment auf $HOST abgeschlossen!"
 done
 
-
-echo "Kopieren abgeschlossen."
+echo "Alle Server aktualisiert!"
