@@ -27,6 +27,6 @@ jobs:
 
     - name: Use Terraform
       run: |
-          terraform init
+          terraform -chdir=terraform/ init
           terraform -chdir=terraform/ plan 
   
