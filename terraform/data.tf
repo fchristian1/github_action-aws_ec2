@@ -29,5 +29,5 @@ data "external" "generate_inventory_first" {
 data "external" "generate_inventory-sec" {
   depends_on = [data.external.generate_inventory_first]
 
-  program = ["bash", "./terraform/generate_inventory.sh"]
+  program = ["bash", "./generate_inventory.sh"]
 }
