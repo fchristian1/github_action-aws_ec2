@@ -33,8 +33,8 @@ for HOST in $HOSTS; do
     # Lösche alte Webdateien und verschiebe **den Inhalt** von html/ ins Root-Verzeichnis
     ssh -i "$SSH_KEY" ubuntu@$HOST <<EOF
         sudo rm -rf $WEB_DIR/*
-        sudo mv $DEST_DIR/* $WEB_DIR/
-        sudo rm -rf $DEST_DIR/  # Entferne leeren html-Ordner
+        sudo mv $DEST_DIR/dist/* $WEB_DIR/
+        sudo rm -rf $DEST_DIR/dist/  # Entferne leeren html-Ordner
 EOF
 
     echo "Deployment auf $HOST abgeschlossen!"
