@@ -22,4 +22,4 @@ while IFS=":" read -r type ip; do
 done <"$TYPE_IP_FILE"
 
 # Terraform erwartet eine JSON-Ausgabe
-echo "{\"status\": \"success\", \"TYPE_IP_FILE\":\"$(cat $TYPE_IP_FILE\",, \"INVENTORY_FILE\":\"$(cat $INVENTORY_FILE\"}"
+echo "{\"status\": \"success\"}"
