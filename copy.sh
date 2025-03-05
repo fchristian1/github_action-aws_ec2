@@ -3,9 +3,9 @@
 # Ansible Inventory Datei
 INVENTORY="./ansible/inventory"
 # Datei, die kopiert werden soll
-SRC_FILE="html/*"
+SRC_FILE="html/"
 # Zielverzeichnis auf den Servern
-DEST_DIR="/home/ubuntu/html"
+DEST_DIR="/home/ubuntu"
 
 # Extrahiere IPs aus [server]-Gruppe des Inventars
 HOSTS=$(awk '/\[server\]/ {flag=1; next} /^\[/{flag=0} flag && NF {print $1}' "$INVENTORY")
@@ -19,9 +19,9 @@ fi
 # Datei auf jeden Host kopieren
 for HOST in $HOSTS; do
     echo "Kopiere $SRC_FILE nach $HOST:$DEST_DIR"
-    ssh -i my_key.pem ubuntu@$HOST "sudo mkdir -p $DEST_DIR && sudo rm $DEST_DIR/* -rf"
+    ssh -i my_key.pem ubuntu@$HOST "sudo rm $DEST_DIR/* -rf"
     scp -i my_key.pem "$SRC_FILE" "ubuntu@$HOST:$DEST_DIR"
-    ssh -i my_key.pem ubuntu@$HOST "sudo cp $DEST_DIR/* /var/www/html/"
+    ssh -i my_key.pem ubuntu@$HOST "sudo cp $DEST_DIR/html/* /var/www/html/"
 done
 
 
