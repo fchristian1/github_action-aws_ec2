@@ -4,7 +4,7 @@ data "external" "generate_ipfile-server" {
   program = ["bash", "-c", <<EOT
     FILE="./type_ips"
     > $FILE
-    for ip in ${join(" ", module.aws-instances-server[*].public_ip)}; do
+    for ip in ${join(" ", module.aws-instances-webserver[*].public_ip)}; do
       echo "server:$ip" >> $FILE
     done
 
