@@ -19,9 +19,9 @@ fi
 # Datei auf jeden Host kopieren
 for HOST in $HOSTS; do
     echo "Kopiere $SRC_FILE nach $HOST:$DEST_DIR"
-    ssh -i my_key.pem "sudo mkdir -p $DEST_DIR && sudo rm $DEST_DIR/* -rf"
-    scp -i my_key.pem "$SRC_FILE" "user@$HOST:$DEST_DIR"
-    ssh -i my_key.pem "sudo cp $DEST_DIR/* /var/www/html/"
+    ssh -i my_key.pem ubuntu@$HOST "sudo mkdir -p $DEST_DIR && sudo rm $DEST_DIR/* -rf"
+    scp -i my_key.pem "$SRC_FILE" "ubuntu@$HOST:$DEST_DIR"
+    ssh -i my_key.pem ubuntu@$HOST "sudo cp $DEST_DIR/* /var/www/html/"
 done
 
 
