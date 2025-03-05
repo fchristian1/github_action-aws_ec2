@@ -13,6 +13,9 @@ resource "aws_instance" "instance" {
   tags = {
     Name = var.instance_name
   }
+  lifecycle {
+    ignore_changes = [ami, security_groups, root_block_device]
+  }
   vpc_security_group_ids = var.security_group_ids
 }
 output "debug_sg_ids" {
