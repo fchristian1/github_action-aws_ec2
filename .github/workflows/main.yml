@@ -24,7 +24,7 @@ jobs:
 
     - name: Install Terraform
       uses: hashicorp/setup-terraform@v2.0.3
-
+    
     - name: Use Terraform
       run: |
           terraform -chdir=terraform/ init
@@ -34,3 +34,8 @@ jobs:
           ls -l terraform/
           ls -l ansible/
           cat ansible/inventory
+        
+    - name: Setup Ansible
+      uses: alex-oleshkevich/setup-ansible@v1.0.1
+      with:
+        version: "2.18.3"
