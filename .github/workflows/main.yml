@@ -5,6 +5,8 @@ jobs:
   AWS-Crendentials:
     runs-on: ubuntu-latest
     steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
     - name: "Configure AWS Credentials" #Action for GitHub Actions
   # You may pin to the exact commit or the version.
   # uses: aws-actions/configure-aws-credentials@ececac1a45f3b08a01d2dd070d28d111c5fe6722
