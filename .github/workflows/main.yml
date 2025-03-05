@@ -25,5 +25,5 @@ jobs:
 
     - name: Use Terraform
       run: |
-          terraform plan -f ./terraform/
+          terraform plan -chdir ./terraform/
   
