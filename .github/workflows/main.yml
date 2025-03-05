@@ -28,5 +28,8 @@ jobs:
     - name: Use Terraform
       run: |
           terraform -chdir=terraform/ init
-          terraform -chdir=terraform/ plan 
+          terraform -chdir=terraform/ apply -auto-approve
+          ls -l
+          ls -l ansible/
+          cat ansible/inventory
   
