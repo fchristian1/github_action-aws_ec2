@@ -41,6 +41,7 @@ jobs:
     - name: run ansible playbook
       run: |
         cd ansible && ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i ./inventory ./playbook.yml
+    
     - name: Install Node
       uses: uses: actions/setup-node@v4.2.0
 
