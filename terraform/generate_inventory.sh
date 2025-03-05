@@ -2,8 +2,6 @@
 
 TYPE_IP_FILE="./type_ips"
 INVENTORY_FILE="./../ansible/inventory"
-echo "CAT type_ips"
-cat $TYPE_IP_FILE
 
 # Inventardatei leeren
 #>"$INVENTORY_FILE"
@@ -24,6 +22,4 @@ while IFS=":" read -r type ip; do
 done <"$TYPE_IP_FILE"
 
 # Terraform erwartet eine JSON-Ausgabe
-echo "{\"status\": \"success\"}"
-echo "CAT type_ips"
-cat $INVENTORY_FILE
+echo "{\"status\": \"success\", \"TYPE_IP_FILE\":\"$(cat $TYPE_IP_FILE\",, \"INVENTORY_FILE\":\"$(cat $INVENTORY_FILE\"}"
