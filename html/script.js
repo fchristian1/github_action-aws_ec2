@@ -6,7 +6,10 @@ let count = 0
 
 count_dec.addEventListener("click", function () {
     count++;
+    countText.innerHtml = count;
 })
 count_inc.addEventListener("click", function () {
     count--;
+    countText.innerHtml = count;
+
 })
