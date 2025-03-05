@@ -1,5 +1,6 @@
 name: Github Action AWS EC2 Terraform Ansible nginx
-on: [push]
+on:
+  workflow_dispatch:
 jobs:
   AWS-Crendentials:
     runs-on: ubuntu-latest
@@ -18,26 +19,11 @@ jobs:
         # AWS Session Token.
         aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
         # Use the web identity token file from the provided file system path in order to assume an IAM role using a web identity, e.g. from within an Amazon EKS worker node.
-    - name: echo path
-      run: |
-          ls -la
-          echo $(ls -la)
+
     - name: Install Terraform
-      run: |
-          sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
-          wget -O- https://apt.releases.hashicorp.com/gpg | \
-          gpg --dearmor | \
-          sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
-          gpg --no-default-keyring \
-          --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg \
-          --fingerprint
-          echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
-          https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
-          sudo tee /etc/apt/sources.list.d/hashicorp.list
-          sudo apt update
-          sudo apt-get install terraform
-          terraform version
+      uses: hashicorp/setup-terraform@v2.0.3
+
     - name: Use Terraform
       run: |
-          cd terraform && terraform plan
+          terraform plan -f ./terraform/
   
