@@ -3,13 +3,7 @@ on: [push]
 jobs:
   AWS-Crendentials:
     runs-on: ubuntu-latest
-    env:
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
     steps:
-    - name: Echo
-      run: "echo $env.AWS_ACCESS_KEY_ID"
     - name: "Configure AWS Credentials" #Action for GitHub Actions
   # You may pin to the exact commit or the version.
   # uses: aws-actions/configure-aws-credentials@ececac1a45f3b08a01d2dd070d28d111c5fe6722
