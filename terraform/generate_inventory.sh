@@ -1,7 +1,7 @@
 #!/bin/bash
 
-TYPE_IP_FILE="./terraform/type_ips"
-INVENTORY_FILE="./ansible/inventory"
+TYPE_IP_FILE="./type_ips"
+INVENTORY_FILE="./../ansible/inventory"
 
 # Inventardatei leeren
 #>"$INVENTORY_FILE"
