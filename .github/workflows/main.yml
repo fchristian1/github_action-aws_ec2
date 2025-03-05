@@ -40,4 +40,4 @@ jobs:
 
     - name:
       run: |
-        cd ansible && ANSIBLE_HOST_KEY_CHECKING=False ansible -i ./inventory ./playbooks.yml
+        cd ansible-playbook && ANSIBLE_HOST_KEY_CHECKING=False ansible -i ./inventory ./playbooks.yml
