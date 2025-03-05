@@ -2,7 +2,7 @@ data "external" "generate_ipfile-server" {
   depends_on = [module.aws-instances-webserver]
 
   program = ["bash", "-c", <<EOT
-    FILE="./type_ips"
+    FILE="./terraform/type_ips"
     > $FILE
     for ip in ${join(" ", module.aws-instances-webserver[*].public_ip)}; do
       echo "server:$ip" >> $FILE
