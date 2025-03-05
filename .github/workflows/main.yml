@@ -38,7 +38,7 @@ jobs:
     - name: Setup Ansible
       uses: alex-oleshkevich/setup-ansible@v1.0.1
       with:
-        version: "2.18.3"
+        version: "2.6"
 
     - name:
       run: |
