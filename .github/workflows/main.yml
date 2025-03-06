@@ -46,7 +46,7 @@ jobs:
     
 
     - name: run npm install
-      run: 
+      run: |
         cd react
         npm install
 
@@ -54,7 +54,7 @@ jobs:
       run: |
         cd react
         npm run test
-        
+
     - name: run npm build
       run: |
         cd react
