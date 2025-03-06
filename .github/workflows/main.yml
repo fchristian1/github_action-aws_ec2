@@ -44,16 +44,17 @@ jobs:
     - name: Install Node
       uses: actions/setup-node@v4.2.0
     
-    - name: run npm test
-      run: |
-        cd react
-        npm run test
 
     - name: run npm install
       run: 
         cd react
         npm install
 
+    - name: run npm test
+      run: |
+        cd react
+        npm run test
+        
     - name: run npm build
       run: |
         cd react
