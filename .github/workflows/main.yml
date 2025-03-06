@@ -1,6 +1,5 @@
 name: Github Action AWS EC2 Terraform Ansible nginx
-on:
-  workflow_dispatch:
+on: [push]
 jobs:
   AWS-Crendentials:
     runs-on: ubuntu-latest
