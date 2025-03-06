@@ -49,6 +49,11 @@ jobs:
         cd react
         npm install
 
+    - name: run npm lint
+      run: |
+        cd react
+        npm run lint
+
     - name: run npm test
       run: |
         cd react
