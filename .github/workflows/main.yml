@@ -8,8 +8,7 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v4
     - name: "Configure AWS Credentials" #Action for GitHub Actions
-  # You may pin to the exact commit or the version.
-  # uses: aws-actions/configure-aws-credentials@ececac1a45f3b08a01d2dd070d28d111c5fe6722
+  
       uses: aws-actions/configure-aws-credentials@v4.1.0
       with:
         # AWS Region, e.g. us-east-2
@@ -44,11 +43,20 @@ jobs:
     
     - name: Install Node
       uses: actions/setup-node@v4.2.0
-
-    - name: run npm
+    
+    - name: run npm test
       run: |
         cd react
+        npm run test
+
+    - name: run npm install
+      run: 
+        cd react
         npm install
+
+    - name: run npm build
+      run: |
+        cd react
         npm run build
 
     - name: deploy website
