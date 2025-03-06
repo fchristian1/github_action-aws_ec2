@@ -33,9 +33,11 @@ jobs:
           ls -l terraform/
           ls -l ansible/
           cat ansible/inventory
-        
-    - name: Setup Ansible
-      run: pipx install --include-deps ansible
+    - name: Setup Ansible Via pip
+      uses: thatsk/pip-ansible@v0.0.1
+      with:
+        # The version of Ansible to install.
+        version: "2.18.3"
 
     - name: run ansible playbook
       run: |
