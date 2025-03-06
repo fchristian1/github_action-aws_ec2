@@ -23,7 +23,7 @@ Dieses Projekt automatisiert die Bereitstellung einer Website auf einer AWS EC2-
 ## Voraussetzungen
 
 - Ein AWS-Konto mit Zugriffsschlüsseln.
-- GitHub Secrets für `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` und`AWS_SESSION_TOKEN`.
+- GitHub Secrets für `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` und `AWS_SESSION_TOKEN`.
 - Grundlegende Kenntnisse in Terraform und Ansible.
 
 ## Verzeichnisstruktur
@@ -51,7 +51,7 @@ Fügen Sie in Ihrem GitHub-Repository die folgenden Secrets hinzu:
 
 - `AWS_ACCESS_KEY_ID`: Ihr AWS Access Key ID.
 - `AWS_SECRET_ACCESS_KEY`: Ihr AWS Secret Access Key.
-- : Ihr AWS Session Token.
+- `AWS_SESSION_TOKEN`: Ihr AWS Session Token.
 
 ### 3. Terraform-Konfiguration anpassen
 
